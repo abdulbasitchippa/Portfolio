@@ -1,0 +1,382 @@
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+  <link rel="stylesheet" href="main2.css">
+  <title>Certi</title>
+</head>
+
+<style>
+
+.menu-branding .portrait{
+  margin-left: 300px;
+  margin-top: 180px;
+}
+
+.menu {
+  margin-left: -20px;
+
+}
+
+
+.nav-link{
+  margin-left: 200px;
+  text-emphasis: none;
+  text-align: center;
+
+}
+
+
+
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    background-color: #444;
+    padding: 20px;
+    font-family: Arial;
+  }
+  
+  /* Center website */
+  .main {
+    max-width: 1000px;
+    margin: auto;
+  }
+  
+  h1 {
+    font-size: 50px;
+    color: yellow;
+    word-break: break-all;
+    text-align: center;
+  }
+  
+  .row {
+    margin: 8px -16px;
+  }
+  
+  /* Add padding BETWEEN each column (if you want) */
+  .row,
+  .row > .column {
+    padding: 8px;
+
+  }
+  
+  /* Create three equal columns that floats next to each other */
+  .column {
+    float: left;
+    width: 33.33%;
+    display: none; /* Hide columns by default */
+  }
+  
+  /* Clear floats after rows */
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  
+  /* Content */
+  .content {
+    background-color: rgb(31, 31, 28);
+    padding: 10px;
+    color: yellow;
+    
+  }
+
+.content> img{
+    width: 100%;
+    height:300px;
+    
+  }
+  
+  /* The "show" class is added to the filtered elements */
+  .show {
+    display: block;
+  }
+  
+  /* Style the buttons */
+  .btn {
+    border: none;
+    outline: none;
+    padding: 12px 16px;
+    background-color: white;
+    cursor: pointer;
+    display: inline;
+    
+  }
+  
+  /* Add a grey background color on mouse-over */
+  .btn:hover {
+    background-color: #ddd;
+  }
+  
+  /* Add a dark background color to the active button */
+  .btn.active {
+    background-color: yellow;
+     color: white;
+  }</style>
+
+<script>
+
+// c = "all"
+
+function filterSelection(c) {
+  var x, i;
+  x = document.getElementsByClassName("column");
+  if (c == "all") c = "";
+  // Add the "show" class (display:block) to the filtered elements, and remove the "show" class from the elements that are not selected
+  for (i = 0; i < x.length; i++) {
+    w3RemoveClass(x[i], "show");
+    if (x[i].className.indexOf(c) > -1) w3AddClass(x[i], "show");
+  }
+}
+
+
+// filterSelection("all") // Execute the function and show all columns
+
+// setInterval(filterSelection("all"), 1)
+
+// Show filtered elements
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {
+      element.className += " " + arr2[i];
+    }
+  }
+}
+
+// Hide elements that are not selected
+function w3RemoveClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    while (arr1.indexOf(arr2[i]) > -1) {
+      arr1.splice(arr1.indexOf(arr2[i]), 1);
+    }
+  }
+  element.className = arr1.join(" ");
+}
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+</script>
+
+<body onload="filterSelection('all')">
+  
+
+<header>
+  <div class="menu-btn">
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+    <div class="btn-line"></div>
+  </div>
+
+  <nav class="menu">
+    <div class="menu-branding">
+      <div class="portrait"></div>
+    </div>
+    <ul class="menu-nav">
+      <li class="nav-item">
+        <a href="index.html" class="nav-link">
+          Home
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="about.html" class="nav-link">
+          My Skills
+        </a>
+      </li>
+      <li class="nav-item current">
+        <a href="certi.html" class="nav-link">
+          Certificates
+        </a>
+      </li>
+
+      <li class="nav-item">
+        <a href="work.html" class="nav-link">
+          My Work
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="experience.html" class="nav-link">
+          Experience
+        </a>
+      </li>
+      <li class="nav-item">
+        <a href="contact.html" class="nav-link">
+          How To Reach Me
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>
+
+  <h1>Certificates</h1>    
+
+  <div id="myBtnContainer">
+    <button class="btn active" onclick="filterSelection('all')"> Show all</button>
+    <button class="btn" onclick="filterSelection('AI')"> AI</button>
+    <button class="btn" onclick="filterSelection('Python')"> Python</button>
+    <button class="btn" onclick="filterSelection('Web')"> Web</button>
+    <button class="btn" onclick="filterSelection('Databases')"> Databases</button>
+    <button class="btn" onclick="filterSelection('Security')"> Security</button>
+    <button class="btn" onclick="filterSelection('Others')"> Others</button>
+  </div>
+  
+
+  <div class="row">
+    <div class="column Web ">
+      <div class="content">
+        <img src="./certi/JS.jpg" alt="Javascript">
+        <h4>Javascript</h4>
+        <p>from SoloLearn</p>
+      </div>
+    </div>
+    <div class="column Python ">
+      <div class="content">
+        <img src="./certi/py.jpg" alt="Python">
+        <h4>Python</h4>
+        <p>from SoloLearn</p>
+      </div>
+    </div>
+    <div class="column Python">
+      <div class="content">
+        <img src="./certi/py pcap.png" alt="sql">
+        <h4>Python</h4>
+        <p>from Cisco Natacad</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column Others ">
+        <div class="content">
+          <img src="./certi/mos.png" alt="Microsoft office specialist">
+          <h4>Microsoft office specialist</h4>
+          <p>from Microsoft</p>
+        </div>
+      </div>
+      <div class="column AI">
+        <div class="content">
+          <img src="./certi/Ai.png" alt="AI">
+          <h4>AI for Everyone</h4>
+          <p>from Coursera</p>
+        </div>
+      </div>
+      <div class="column Others">
+        <div class="content">
+          <img src="./certi/web sc.png" alt="web scraping">
+          <h4>web scraping</h4>
+          <p>from Coursera</p>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="column Security ">
+          <div class="content">
+            <img src="./certi/cyber cisco.png" alt="security">
+            <h4>Intro to cyberSecurity</h4>
+            <p>from Cisco</p>
+          </div>
+        </div>
+        <div class="column Security ">
+          <div class="content">
+            <img src="./certi/sec icsi.png" alt="security">
+            <h4>CNSS (Certified Network Security Specialist)</h4>
+            <p>from ICSI</p>
+          </div>
+        </div>
+        <div class="column Security">
+          <div class="content">
+            <img src="./certi/cyber elearn.png" alt="sql">
+            <h4>Cyber Security</h4>
+            <p>from eLearning College</p>
+          </div>
+        </div>
+</div>
+        <div class="row">
+          <div class="column Databases">
+            <div class="content">
+              <img src="./certi/sql fun.jpg" alt="sql">
+              <h4>SQL</h4>
+              <p>from SoloLearn</p>
+            </div>
+          </div>
+          <div class="column Web">
+            <div class="content">
+              <img src="./certi/html.png" alt="html">
+              <h4>Html</h4>
+              <p>from SoloLearn</p>
+            </div>
+          </div>
+          <div class="column Web">
+            <div class="content">
+              <img src="./certi/seo.png" alt="sql">
+              <h4>SEO (Search Engine Optimization)</h4>
+              <p>from Digiskills</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="column Others ">
+              <div class="content">
+                <img src="./certi/ecom.png" alt="ecom mang">
+                <h4>Ecommerce Management</h4>
+                <p>from Digiskills</p>
+              </div>
+            </div>
+
+            <div class="column Web ">
+              <div class="content">
+                <img src="./certi/mob sit.png" alt="mobile">
+                <h4>Mobile Site Certification</h4>
+                <p>from Google</p>
+              </div>
+            </div>
+            <div class="column AI">
+              <div class="content">
+                <img src="./certi/regression tenserflowCoursera.png" alt="">
+                <h4>Regression using Tensorflow </h4>
+                <p>from Coursera</p>
+              </div>
+            </div>
+</div>
+            <div class="row">
+              <div class="column Python AI Web ">
+                <div class="content">
+                  <img src="./certi/py bootcamp 2020.jpg" alt="">
+                  <h4>python bootcamp 2020 </h4>
+                  <p>from Udemy</p>
+                </div>
+              </div>
+              <div class="column Web ">
+                <div class="content">
+                  <img src="./certi/mern udemy.jpg" alt="">
+                  <h4>MERN Stack</h4>
+                  <p>from Udemy</p>
+                </div>
+              </div>
+              <div class="column Web AI">
+                <div class="content">
+                  <img src="./certi/Ai web des udemy.jpg" alt="">
+                  <h4>AI Website Designing tools</h4>
+                  <p>from Udemy</p>
+                </div>
+              </div>
+              </div>
+  </div>
+</body>
+  <script src="main.js"></script>
